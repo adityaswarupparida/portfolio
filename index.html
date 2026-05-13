@@ -364,7 +364,8 @@
       font-family: 'JetBrains Mono', monospace; font-size: 12px;
       color: var(--text-3); display: flex; align-items: flex-start; gap: 8px;
     }
-    .proj-bullets li b { color: var(--accent); flex-shrink: 0; font-weight: 400; }
+    .proj-bullets li b { color: var(--accent); flex-shrink: 0; font-weight: 400; line-height: 1.7; }
+    .proj-bullets li span { flex: 1; }
     .proj-bullets li strong { color: var(--text-2); font-weight: 500; }
     .tech-row { display: flex; flex-wrap: wrap; gap: 7px; }
     .tech-chip {
@@ -691,9 +692,9 @@
           <div class="proj-name">AI Testing Framework</div>
           <div class="proj-desc">A <strong>black-box testing framework</strong> to evaluate AI agent reliability across diverse intents using a multi-signal evaluation pipeline with 4 scoring strategies.</div>
           <ul class="proj-bullets">
-            <li><b>→</b> 4 scoring strategies — exact match, semantic similarity, composite, <strong>LLM-as-judge</strong></li>
-            <li><b>→</b> pgvector + cosine similarity with <strong>cached vectors</strong> to cut redundant LLM calls</li>
-            <li><b>→</b> LLM-driven follow-up generator for <strong>multi-turn dialogue</strong> testing</li>
+            <li><b>→</b><span>4 scoring strategies — exact match, semantic similarity, composite, <strong>LLM-as-judge</strong></span></li>
+            <li><b>→</b><span>pgvector + cosine similarity with <strong>cached vectors</strong> to cut redundant LLM calls</span></li>
+            <li><b>→</b><span>LLM-driven follow-up generator for <strong>multi-turn dialogue</strong> testing</span></li>
           </ul>
           <div class="tech-row">
             <span class="tech-chip">TypeScript</span>
@@ -705,13 +706,32 @@
         </div>
 
         <div class="proj-card fade-in">
-          <div class="proj-num">02 / AI MAIL</div>
+          <div class="proj-num">02 / REVIEW ANALYTICS ENGINE</div>
+          <div class="proj-name">Review Analytics Engine</div>
+          <div class="proj-desc">A <strong>competitor intelligence pipeline</strong> that discovers rivals, scrapes product reviews, runs AI analysis, and surfaces insights through visual dashboards.</div>
+          <ul class="proj-bullets">
+            <li><b>→</b><span>Discovers target + <strong>9 competitors</strong> via ScraperAPI; scrapes up to <strong>1,000 reviews/listing</strong> using a custom AJAX scraper with Playwright sessions</span></li>
+            <li><b>→</b><span>Claude-powered batch analysis — sentiment breakdowns, purchase criteria, &amp; <strong>revenue estimates</strong></span></li>
+            <li><b>→</b><span>Real-time pipeline progress via <strong>SSE</strong> + automated markdown report delivery via email</span></li>
+          </ul>
+          <div class="tech-row">
+            <span class="tech-chip">TypeScript</span>
+            <span class="tech-chip">Hono</span>
+            <span class="tech-chip">Claude API</span>
+            <span class="tech-chip">Playwright</span>
+            <span class="tech-chip">ScraperAPI</span>
+            <span class="tech-chip">SQLite</span>
+          </div>
+        </div>
+
+        <div class="proj-card fade-in">
+          <div class="proj-num">03 / AI MAIL</div>
           <div class="proj-name">AI Mail</div>
           <div class="proj-desc">An <strong>AI-powered mail client</strong> where a LangGraph agent orchestrates and controls the UI in real time via natural language commands.</div>
           <ul class="proj-bullets">
-            <li><b>→</b> Agent drives live UI — compose, reply, open, search, filter</li>
-            <li><b>→</b> Gmail API integration with <strong>OAuth 2.0</strong> for secure scoped access</li>
-            <li><b>→</b> Built with LangGraph + Copilotkit for agent-UI co-orchestration</li>
+            <li><b>→</b><span>Agent drives live UI — compose, reply, open, search, filter</span></li>
+            <li><b>→</b><span>Gmail API integration with <strong>OAuth 2.0</strong> for secure scoped access</span></li>
+            <li><b>→</b><span>Built with LangGraph + Copilotkit for agent-UI co-orchestration</span></li>
           </ul>
           <div class="tech-row">
             <span class="tech-chip">TypeScript</span>
@@ -723,13 +743,13 @@
         </div>
 
         <div class="proj-card fade-in">
-          <div class="proj-num">03 / MIRA AGENT</div>
+          <div class="proj-num">04 / MIRA AGENT</div>
           <div class="proj-name">Mira Agent</div>
           <div class="proj-desc">An <strong>AI receptionist</strong> for a salon, powered by Livekit. Intelligent RAG-based retrieval from a dynamic knowledge base with human-escalation workflows.</div>
           <ul class="proj-bullets">
-            <li><b>→</b> RAG retrieval from Qdrant — <strong>60% accuracy improvement</strong></li>
-            <li><b>→</b> Escalation to human supervisors via Pub/Sub with AI follow-ups</li>
-            <li><b>→</b> Real-time voice AI reception with dynamic knowledge base</li>
+            <li><b>→</b><span>RAG retrieval from Qdrant — <strong>60% accuracy improvement</strong></span></li>
+            <li><b>→</b><span>Escalation to human supervisors via Pub/Sub with AI follow-ups</span></li>
+            <li><b>→</b><span>Real-time voice AI reception with dynamic knowledge base</span></li>
           </ul>
           <div class="tech-row">
             <span class="tech-chip">Python</span>
@@ -742,13 +762,13 @@
         </div>
 
         <div class="proj-card fade-in">
-          <div class="proj-num">04 / LEMON AI</div>
+          <div class="proj-num">05 / LEMON AI</div>
           <div class="proj-name">Lemon AI</div>
           <div class="proj-desc">A <strong>chat-based AI assistant</strong> with real-time conversations, chat sharing, and a rigorous LLM evaluation suite built on the LLM-as-judge pattern.</div>
           <ul class="proj-bullets">
-            <li><b>→</b> LLM eval suite — quality, safety, tone &amp; factual accuracy</li>
-            <li><b>→</b> <strong>12× INP improvement</strong>: 704ms → 56ms via React optimizations</li>
-            <li><b>→</b> Real-time conversations with shareable chat sessions</li>
+            <li><b>→</b><span>LLM eval suite — quality, safety, tone &amp; factual accuracy</span></li>
+            <li><b>→</b><span><strong>12× INP improvement</strong>: 704ms → 56ms via React optimizations</span></li>
+            <li><b>→</b><span>Real-time conversations with shareable chat sessions</span></li>
           </ul>
           <div class="tech-row">
             <span class="tech-chip">TypeScript</span>
@@ -760,13 +780,13 @@
         </div>
 
         <div class="proj-card fade-in">
-          <div class="proj-num">05 / BETTER UPTIME</div>
+          <div class="proj-num">06 / BETTER UPTIME</div>
           <div class="proj-name">Better Uptime</div>
           <div class="proj-desc">High-scale uptime monitoring tracking <strong>100K+ websites</strong> every 3 minutes with an async, message-driven architecture built for fault tolerance.</div>
           <ul class="proj-bullets">
-            <li><b>→</b> Monitors <strong>100K+ websites</strong> every 3 minutes</li>
-            <li><b>→</b> Async message-driven arch — publisher &amp; worker nodes</li>
-            <li><b>→</b> Bulk DB writes + smart caching for maximum throughput</li>
+            <li><b>→</b><span>Monitors <strong>100K+ websites</strong> every 3 minutes</span></li>
+            <li><b>→</b><span>Async message-driven arch — publisher &amp; worker nodes</span></li>
+            <li><b>→</b><span>Bulk DB writes + smart caching for maximum throughput</span></li>
           </ul>
           <div class="tech-row">
             <span class="tech-chip">TypeScript</span>
