@@ -344,6 +344,7 @@
       background: var(--bg-1); border: 1px solid var(--border);
       padding: 36px; position: relative; overflow: hidden;
       transition: border-color 0.3s, transform 0.3s; cursor: none;
+      display: flex; flex-direction: column;
     }
     .proj-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
@@ -367,7 +368,16 @@
     .proj-bullets li b { color: var(--accent); flex-shrink: 0; font-weight: 400; line-height: 1.7; }
     .proj-bullets li span { flex: 1; }
     .proj-bullets li strong { color: var(--text-2); font-weight: 500; }
-    .tech-row { display: flex; flex-wrap: wrap; gap: 7px; }
+    .tech-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
+    .proj-footer { display: flex; align-items: center; justify-content: flex-start; margin-top: auto; padding-top: 20px; }
+    .proj-gh {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      color: var(--text-3); text-decoration: none; letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+    .proj-gh svg { width: 13px; height: 13px; }
+    .proj-gh:hover { color: var(--accent); }
     .tech-chip {
       font-family: 'JetBrains Mono', monospace; font-size: 10px;
       padding: 4px 10px; background: var(--bg-3); color: var(--text-3);
@@ -703,7 +713,14 @@
             <span class="tech-chip">Bun</span>
             <span class="tech-chip">PostgreSQL</span>
             <span class="tech-chip">pgvector</span>
-            <span class="tech-chip">LLM-as-judge</span>
+            <span class="tech-chip">RAG</span>
+            <span class="tech-chip">Multi-agent systems</span>
+          </div>
+          <div class="proj-footer">
+            <a href="https://github.com/adityaswarupparida/ai-testing-framework" target="_blank" rel="noopener" class="proj-gh">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.605-2.665-.305-5.467-1.334-5.467-5.93 0-1.31.468-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              View on GitHub
+            </a>
           </div>
         </div>
 
@@ -712,9 +729,9 @@
           <div class="proj-name">Review Analytics Engine</div>
           <div class="proj-desc">A <strong>competitor intelligence pipeline</strong> that discovers rivals, scrapes product reviews, runs AI analysis, and surfaces insights through visual dashboards.</div>
           <ul class="proj-bullets">
-            <li><b>→</b><span>Discovers target + <strong>9 competitors</strong> via ScraperAPI; scrapes up to <strong>1,000 reviews/listing</strong> using a custom AJAX scraper with Playwright sessions</span></li>
-            <li><b>→</b><span>Claude-powered batch analysis — sentiment breakdowns, purchase criteria, &amp; <strong>revenue estimates</strong></span></li>
-            <li><b>→</b><span>Real-time pipeline progress via <strong>SSE</strong> + automated markdown report delivery via email</span></li>
+            <li><b>→</b><span>Discovers target + <strong>9 competitors</strong> via ScraperAPI; custom Playwright AJAX scraper pulls <strong>1,000+ reviews/listing</strong></span></li>
+            <li><b>→</b><span>Claude-powered batch analysis — sentiment breakdowns, purchase criterias &amp; <strong>revenue estimates</strong></span></li>
+            <li><b>→</b><span>Real-time pipeline progress via <strong>SSE</strong> + automated markdown report delivery</span></li>
           </ul>
           <div class="tech-row">
             <span class="tech-chip">TypeScript</span>
@@ -723,6 +740,12 @@
             <span class="tech-chip">Playwright</span>
             <span class="tech-chip">ScraperAPI</span>
             <span class="tech-chip">SQLite</span>
+          </div>
+          <div class="proj-footer">
+            <a href="https://github.com/adityaswarupparida/review-analytics-engine" target="_blank" rel="noopener" class="proj-gh">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.605-2.665-.305-5.467-1.334-5.467-5.93 0-1.31.468-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              View on GitHub
+            </a>
           </div>
         </div>
 
@@ -740,44 +763,67 @@
             <span class="tech-chip">NextJS</span>
             <span class="tech-chip">LangGraph</span>
             <span class="tech-chip">Copilotkit</span>
+            <span class="tech-chip">Google APIs</span>
             <span class="tech-chip">AI Agent</span>
+          </div>
+          <div class="proj-footer">
+            <a href="https://github.com/adityaswarupparida/ai-mail" target="_blank" rel="noopener" class="proj-gh">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.605-2.665-.305-5.467-1.334-5.467-5.93 0-1.31.468-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              View on GitHub
+            </a>
           </div>
         </div>
 
         <div class="proj-card fade-in">
-          <div class="proj-num">04 / MIRA AGENT</div>
-          <div class="proj-name">Mira Agent</div>
-          <div class="proj-desc">An <strong>AI receptionist</strong> for a salon, powered by Livekit. Intelligent RAG-based retrieval from a dynamic knowledge base with human-escalation workflows.</div>
+          <div class="proj-num">04 / AI INTERVIEWER</div>
+          <div class="proj-name">AI Interviewer</div>
+          <div class="proj-desc">An <strong>AI-powered voice interview platform</strong> where recruiters create interviews, candidates join via invite link, and a LiveKit agent conducts it in real-time.</div>
           <ul class="proj-bullets">
-            <li><b>→</b><span>RAG retrieval from Qdrant — <strong>60% accuracy improvement</strong></span></li>
-            <li><b>→</b><span>Escalation to human supervisors via Pub/Sub with AI follow-ups</span></li>
-            <li><b>→</b><span>Real-time voice AI reception with dynamic knowledge base</span></li>
+            <li><b>→</b><span>Gemini <strong>auto-extracts skills</strong> from job description and <strong>injects as agent context</strong></span></li>
+            <li><b>→</b><span>LiveKit agent conducts a live <strong>bidirectional voice interview</strong> with real-time turn detection and acceptable latency</span></li>
+            <li><b>→</b><span><strong>Celery</strong> async eval scored across competencies, strengths &amp; weaknesses</span></li>
           </ul>
           <div class="tech-row">
+            <span class="tech-chip">TypeScript</span>
             <span class="tech-chip">Python</span>
-            <span class="tech-chip">Livekit</span>
-            <span class="tech-chip">TypeScript</span>
-            <span class="tech-chip">React</span>
-            <span class="tech-chip">Qdrant</span>
-            <span class="tech-chip">Pub/Sub</span>
+            <span class="tech-chip">FastAPI</span>
+            <span class="tech-chip">NextJS</span>
+            <span class="tech-chip">LiveKit</span>
+            <span class="tech-chip">Gemini</span>
+            <span class="tech-chip">PostgreSQL</span>
+            <span class="tech-chip">Redis</span>
+            <span class="tech-chip">Celery</span>
+          </div>
+          <div class="proj-footer">
+            <a href="https://github.com/adityaswarupparida/AI-Interviewer" target="_blank" rel="noopener" class="proj-gh">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.605-2.665-.305-5.467-1.334-5.467-5.93 0-1.31.468-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              View on GitHub
+            </a>
           </div>
         </div>
 
         <div class="proj-card fade-in">
-          <div class="proj-num">05 / LEMON AI</div>
-          <div class="proj-name">Lemon AI</div>
-          <div class="proj-desc">A <strong>chat-based AI assistant</strong> with real-time conversations, chat sharing, and a rigorous LLM evaluation suite built on the LLM-as-judge pattern.</div>
+          <div class="proj-num">05 / HUBSPOT DATA EXPLORER</div>
+          <div class="proj-name">HubSpot Data Explorer</div>
+          <div class="proj-desc">A <strong>no-code CRM explorer tool</strong> to browse and query HubSpot data without writing queries, with a full OAuth flow and responsive dashboard.</div>
           <ul class="proj-bullets">
-            <li><b>→</b><span>LLM eval suite — quality, safety, tone &amp; factual accuracy</span></li>
-            <li><b>→</b><span><strong>12× INP improvement</strong>: 704ms → 56ms via React optimizations</span></li>
-            <li><b>→</b><span>Real-time conversations with shareable chat sessions</span></li>
+            <li><b>→</b><span>HubSpot integration via <strong>OAuth 2.0</strong> for secure, scoped data access</span></li>
+            <li><b>→</b><span>Node.js + Express backend fetches &amp; aggregates across <strong>HubSpot REST APIs</strong></span></li>
+            <li><b>→</b><span>Responsive Next.js frontend for <strong>filtering, querying and visualizing</strong> CRM data</span></li>
           </ul>
           <div class="tech-row">
             <span class="tech-chip">TypeScript</span>
+            <span class="tech-chip">Node.js</span>
+            <span class="tech-chip">Express.js</span>
             <span class="tech-chip">NextJS</span>
-            <span class="tech-chip">React</span>
-            <span class="tech-chip">Gemini</span>
-            <span class="tech-chip">AI Agent</span>
+            <span class="tech-chip">REST APIs</span>
+            <span class="tech-chip">OAuth 2.0</span>
+          </div>
+          <div class="proj-footer">
+            <a href="https://github.com/adityaswarupparida/hubspot-data-viewer" target="_blank" rel="noopener" class="proj-gh">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.605-2.665-.305-5.467-1.334-5.467-5.93 0-1.31.468-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              View on GitHub
+            </a>
           </div>
         </div>
 
@@ -787,8 +833,9 @@
           <div class="proj-desc">High-scale uptime monitoring tracking <strong>100K+ websites</strong> every 3 minutes with an async, message-driven architecture built for fault tolerance.</div>
           <ul class="proj-bullets">
             <li><b>→</b><span>Monitors <strong>100K+ websites</strong> every 3 minutes</span></li>
-            <li><b>→</b><span>Async message-driven arch — publisher &amp; worker nodes</span></li>
-            <li><b>→</b><span>Bulk DB writes + smart caching for maximum throughput</span></li>
+            <li><b>→</b><span>Message queues decouple publisher/worker nodes for <strong>high concurrency and fault tolerance</strong></span></li>
+            <li><b>→</b><span>Horizontally scalable workers — independent processing enables <strong>linear scale-out</strong></span></li>
+            <li><b>→</b><span>Bulk database writes + smart caching for maximum throughput</span></li>
           </ul>
           <div class="tech-row">
             <span class="tech-chip">TypeScript</span>
@@ -796,6 +843,12 @@
             <span class="tech-chip">PostgreSQL</span>
             <span class="tech-chip">Redis</span>
             <span class="tech-chip">Message Queue</span>
+          </div>
+          <div class="proj-footer">
+            <a href="https://github.com/adityaswarupparida/better-uptime" target="_blank" rel="noopener" class="proj-gh">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.605-2.665-.305-5.467-1.334-5.467-5.93 0-1.31.468-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              View on GitHub
+            </a>
           </div>
         </div>
       </div>
