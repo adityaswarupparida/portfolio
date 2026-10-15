@@ -232,19 +232,37 @@
     /* ─── Marquee ─── */
     .marquee-wrap {
       overflow: hidden; border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border); padding: 18px 0;
+      border-bottom: 1px solid var(--border); padding: 22px 0;
       position: relative; z-index: 1;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+              mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
     }
     .marquee-track {
-      display: flex; gap: 60px;
-      animation: marquee 28s linear infinite; white-space: nowrap;
+      display: flex; width: max-content;
+      animation: marquee 40s linear infinite;
     }
+    .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
     .marquee-item {
-      font-family: 'JetBrains Mono', monospace; font-size: 12px;
-      color: var(--text-4); letter-spacing: 0.18em; text-transform: uppercase; flex-shrink: 0;
+      position: relative; flex-shrink: 0; padding: 0 36px;
+      display: flex; align-items: center; justify-content: center;
     }
-    .marquee-item b { color: var(--accent); font-weight: 400; margin-right: 6px; }
-
+    /* Logos ship in brand colour; flattened to grey until hovered */
+    .marquee-item img {
+      width: 36px; height: 36px; display: block;
+      filter: brightness(0) invert(0.45); opacity: 0.85;
+      transform: scale(var(--s, 1));
+      transition: filter 0.25s, opacity 0.25s, transform 0.25s;
+    }
+    /* On hover the logo lifts so logo + name sit centred inside the strip */
+    .marquee-item:hover img { filter: brightness(1.25) invert(0); opacity: 1; transform: translateY(-8px) scale(calc(var(--s, 1) * 1.06)); }
+    .mi-typescript, .mi-nextdotjs { --s: 0.85; }
+    .mi-go { --s: 1.45; }
+    .mi-name {
+      position: absolute; left: 50%; top: calc(100% - 2px); transform: translate(-50%, 4px);
+      font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-2);
+      white-space: nowrap; opacity: 0; transition: opacity 0.2s, transform 0.25s; pointer-events: none;
+    }
+    .marquee-item:hover .mi-name { opacity: 1; transform: translate(-50%, 0); }
     /* ─── Sections ─── */
     .section-wrap {
       padding: 120px 52px; position: relative; z-index: 1;
@@ -311,12 +329,14 @@
       color: var(--accent); font-family: 'JetBrains Mono', monospace;
     }
     .tl-list li strong { color: var(--text); font-weight: 600; }
-    .award-pill {
-      display: inline-flex; align-items: center; gap: 8px;
-      margin-top: 20px; padding: 7px 16px;
-      background: rgba(249,115,22,0.08); border: 1px solid rgba(249,115,22,0.25);
-      color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    .tl-list li.tl-award::before { content: '★'; }
+    .tl-link {
+      color: inherit; text-decoration: underline; text-decoration-color: rgba(249,115,22,0.55);
+      text-decoration-thickness: 1px; text-underline-offset: 4px;
+      transition: color 0.2s, text-decoration-color 0.2s;
     }
+    .tl-link:hover { text-decoration-color: var(--accent); }
+    .tl-link:hover strong { color: var(--accent); }
 
     /* ─── Project cards ─── */
     .projects-grid {
@@ -469,7 +489,7 @@
       display: flex; justify-content: space-between; align-items: center;
       position: relative; z-index: 1;
     }
-    footer p { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-4); }
+    footer p { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-3); }
     footer span { color: var(--accent); }
 
     /* ─── Animations ─── */
@@ -576,35 +596,41 @@
   <!-- Marquee -->
   <div class="marquee-wrap">
     <div class="marquee-track" id="mtrack">
-      <span class="marquee-item"><b>✦</b> TypeScript</span>
-      <span class="marquee-item"><b>✦</b> Go</span>
-      <span class="marquee-item"><b>✦</b> C++</span>
-      <span class="marquee-item"><b>✦</b> React</span>
-      <span class="marquee-item"><b>✦</b> NextJS</span>
-      <span class="marquee-item"><b>✦</b> PostgreSQL</span>
-      <span class="marquee-item"><b>✦</b> Redis</span>
-      <span class="marquee-item"><b>✦</b> Docker</span>
-      <span class="marquee-item"><b>✦</b> Kubernetes</span>
-      <span class="marquee-item"><b>✦</b> AWS</span>
-      <span class="marquee-item"><b>✦</b> Python</span>
-      <span class="marquee-item"><b>✦</b> Prometheus</span>
-      <span class="marquee-item"><b>✦</b> Grafana</span>
-      <span class="marquee-item"><b>✦</b> MongoDB</span>
+      <span class="marquee-item mi-typescript"><img src="assets/icons/typescript.svg" alt="" width="36" height="36" /><span class="mi-name">TypeScript</span></span>
+      <span class="marquee-item mi-go"><img src="assets/icons/go.svg" alt="" width="36" height="36" /><span class="mi-name">Go</span></span>
+      <span class="marquee-item mi-rust"><img src="assets/icons/rust.svg" alt="" width="36" height="36" /><span class="mi-name">Rust</span></span>
+      <span class="marquee-item mi-python"><img src="assets/icons/python.svg" alt="" width="36" height="36" /><span class="mi-name">Python</span></span>
+      <span class="marquee-item mi-cplusplus"><img src="assets/icons/cplusplus.svg" alt="" width="36" height="36" /><span class="mi-name">C++</span></span>
+      <span class="marquee-item mi-react"><img src="assets/icons/react.svg" alt="" width="36" height="36" /><span class="mi-name">React</span></span>
+      <span class="marquee-item mi-nextdotjs"><img src="assets/icons/nextdotjs.svg" alt="" width="36" height="36" /><span class="mi-name">Next.js</span></span>
+      <span class="marquee-item mi-nodedotjs"><img src="assets/icons/nodedotjs.svg" alt="" width="36" height="36" /><span class="mi-name">Node.js</span></span>
+      <span class="marquee-item mi-postgresql"><img src="assets/icons/postgresql.svg" alt="" width="36" height="36" /><span class="mi-name">PostgreSQL</span></span>
+      <span class="marquee-item mi-redis"><img src="assets/icons/redis.svg" alt="" width="36" height="36" /><span class="mi-name">Redis</span></span>
+      <span class="marquee-item mi-supabase"><img src="assets/icons/supabase.svg" alt="" width="36" height="36" /><span class="mi-name">Supabase</span></span>
+      <span class="marquee-item mi-langgraph"><img src="assets/icons/langgraph.svg" alt="" width="36" height="36" /><span class="mi-name">LangGraph</span></span>
+      <span class="marquee-item mi-claude"><img src="assets/icons/claude.svg" alt="" width="36" height="36" /><span class="mi-name">Claude</span></span>
+      <span class="marquee-item mi-docker"><img src="assets/icons/docker.svg" alt="" width="36" height="36" /><span class="mi-name">Docker</span></span>
+      <span class="marquee-item mi-kubernetes"><img src="assets/icons/kubernetes.svg" alt="" width="36" height="36" /><span class="mi-name">Kubernetes</span></span>
+      <span class="marquee-item mi-amazonwebservices"><img src="assets/icons/amazonwebservices.svg" alt="" width="36" height="36" /><span class="mi-name">AWS</span></span>
+      <span class="marquee-item mi-prometheus"><img src="assets/icons/prometheus.svg" alt="" width="36" height="36" /><span class="mi-name">Prometheus</span></span>
       <!-- duplicate for seamless loop -->
-      <span class="marquee-item"><b>✦</b> TypeScript</span>
-      <span class="marquee-item"><b>✦</b> Go</span>
-      <span class="marquee-item"><b>✦</b> C++</span>
-      <span class="marquee-item"><b>✦</b> React</span>
-      <span class="marquee-item"><b>✦</b> NextJS</span>
-      <span class="marquee-item"><b>✦</b> PostgreSQL</span>
-      <span class="marquee-item"><b>✦</b> Redis</span>
-      <span class="marquee-item"><b>✦</b> Docker</span>
-      <span class="marquee-item"><b>✦</b> Kubernetes</span>
-      <span class="marquee-item"><b>✦</b> AWS</span>
-      <span class="marquee-item"><b>✦</b> Python</span>
-      <span class="marquee-item"><b>✦</b> Prometheus</span>
-      <span class="marquee-item"><b>✦</b> Grafana</span>
-      <span class="marquee-item"><b>✦</b> MongoDB</span>
+      <span class="marquee-item mi-typescript" aria-hidden="true"><img src="assets/icons/typescript.svg" alt="" width="36" height="36" /><span class="mi-name">TypeScript</span></span>
+      <span class="marquee-item mi-go" aria-hidden="true"><img src="assets/icons/go.svg" alt="" width="36" height="36" /><span class="mi-name">Go</span></span>
+      <span class="marquee-item mi-rust" aria-hidden="true"><img src="assets/icons/rust.svg" alt="" width="36" height="36" /><span class="mi-name">Rust</span></span>
+      <span class="marquee-item mi-python" aria-hidden="true"><img src="assets/icons/python.svg" alt="" width="36" height="36" /><span class="mi-name">Python</span></span>
+      <span class="marquee-item mi-cplusplus" aria-hidden="true"><img src="assets/icons/cplusplus.svg" alt="" width="36" height="36" /><span class="mi-name">C++</span></span>
+      <span class="marquee-item mi-react" aria-hidden="true"><img src="assets/icons/react.svg" alt="" width="36" height="36" /><span class="mi-name">React</span></span>
+      <span class="marquee-item mi-nextdotjs" aria-hidden="true"><img src="assets/icons/nextdotjs.svg" alt="" width="36" height="36" /><span class="mi-name">Next.js</span></span>
+      <span class="marquee-item mi-nodedotjs" aria-hidden="true"><img src="assets/icons/nodedotjs.svg" alt="" width="36" height="36" /><span class="mi-name">Node.js</span></span>
+      <span class="marquee-item mi-postgresql" aria-hidden="true"><img src="assets/icons/postgresql.svg" alt="" width="36" height="36" /><span class="mi-name">PostgreSQL</span></span>
+      <span class="marquee-item mi-redis" aria-hidden="true"><img src="assets/icons/redis.svg" alt="" width="36" height="36" /><span class="mi-name">Redis</span></span>
+      <span class="marquee-item mi-supabase" aria-hidden="true"><img src="assets/icons/supabase.svg" alt="" width="36" height="36" /><span class="mi-name">Supabase</span></span>
+      <span class="marquee-item mi-langgraph" aria-hidden="true"><img src="assets/icons/langgraph.svg" alt="" width="36" height="36" /><span class="mi-name">LangGraph</span></span>
+      <span class="marquee-item mi-claude" aria-hidden="true"><img src="assets/icons/claude.svg" alt="" width="36" height="36" /><span class="mi-name">Claude</span></span>
+      <span class="marquee-item mi-docker" aria-hidden="true"><img src="assets/icons/docker.svg" alt="" width="36" height="36" /><span class="mi-name">Docker</span></span>
+      <span class="marquee-item mi-kubernetes" aria-hidden="true"><img src="assets/icons/kubernetes.svg" alt="" width="36" height="36" /><span class="mi-name">Kubernetes</span></span>
+      <span class="marquee-item mi-amazonwebservices" aria-hidden="true"><img src="assets/icons/amazonwebservices.svg" alt="" width="36" height="36" /><span class="mi-name">AWS</span></span>
+      <span class="marquee-item mi-prometheus" aria-hidden="true"><img src="assets/icons/prometheus.svg" alt="" width="36" height="36" /><span class="mi-name">Prometheus</span></span>
     </div>
   </div>
 
@@ -647,8 +673,8 @@
             <li>Profiled and overhauled a heavily customized invoicing service, increasing invoice capacity <strong>3× (300 → 900+ line items)</strong> and cutting posting time from <strong>5–6 min to near-instant</strong>.</li>
             <li>Successfully resolved over <strong>70% of user-reported bugs</strong> within a year, enhancing user satisfaction &amp; operational efficiency.</li>
             <li>Owned end-to-end coordination with revenue and finance stakeholders for <strong>quarter-end and annual closures</strong> over <strong>2 years</strong>, driving revenue outstanding down by <strong>95% on average</strong> — delivered on time, every cycle.</li>
+            <li class="tl-award">Awarded <a href="https://drive.google.com/file/d/1rMk1zOCkY9YER_ZpRBz1hYro_9poUayC/view?usp=sharing" target="_blank" rel="noopener" class="tl-link"><strong>Rockstar Developer of the Month</strong></a> (Jan '25)</li>
           </ul>
-          <div class="award-pill">★&nbsp; Rockstar Developer of the Month — Jan '25</div>
         </div>
 
         <div class="tl-item fade-in">
@@ -923,8 +949,8 @@
             <span class="pill lvl-adv">C++</span>
             <span class="pill lvl-adv">Go</span>
             <span class="pill lvl-mid">Python</span>
+            <span class="pill lvl-mid">Rust</span>
             <span class="pill lvl-mid">Java</span>
-            <span class="pill lvl-low">Rust</span>
             <span class="pill lvl-low">Elixir</span>
           </div>
         </div>
