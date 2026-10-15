@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aditya Swarup Parida — Full Stack & Backend Developer</title>
+  <title>Aditya Swarup Parida — Full Stack Engineer · AI &amp; Backend</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
@@ -142,7 +142,7 @@
       background: radial-gradient(circle, rgba(249,115,22,0.06) 0%, transparent 70%);
       bottom: 0; left: -100px; pointer-events: none;
     }
-    .hero-content { max-width: 1100px; width: 100%; }
+    .hero-content { max-width: 1100px; width: 100%; min-width: 0; }
     .hero-eyebrow {
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px; color: var(--accent);
@@ -169,7 +169,7 @@
     .hero-terminal {
       font-family: 'JetBrains Mono', monospace;
       font-size: clamp(14px, 2vw, 18px); color: var(--text-2);
-      margin-bottom: 56px; display: flex; align-items: center; gap: 10px;
+      margin-bottom: 22px; display: flex; align-items: center; gap: 10px;
       opacity: 0; animation: fadeUp 0.6s 0.85s forwards;
     }
     .t-prompt { color: var(--accent); }
@@ -180,15 +180,15 @@
     }
 
     .hero-stats {
-      display: flex; gap: 52px; margin-bottom: 52px; flex-wrap: wrap;
-      opacity: 0; animation: fadeUp 0.6s 1.05s forwards;
+      font-family: 'JetBrains Mono', monospace; font-size: clamp(13px, 1.5vw, 15px);
+      display: flex; flex-direction: column; gap: 10px; margin-bottom: 52px;
+      padding-left: 2px; opacity: 0; animation: fadeUp 0.6s 1.05s forwards;
     }
-    .stat-item { display: flex; flex-direction: column; }
-    .stat-number { font-size: 38px; font-weight: 800; color: var(--accent); line-height: 1; }
-    .stat-label {
-      font-family: 'JetBrains Mono', monospace; font-size: 10px;
-      color: var(--text-3); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 5px;
-    }
+    .stat-row { display: flex; gap: 14px; line-height: 1.5; }
+    .stat-row::before { content: '→'; color: var(--text-4); flex-shrink: 0; }
+    .stat-key { color: var(--accent); min-width: 12ch; flex-shrink: 0; }
+    .stat-val { color: var(--text-3); flex: 1; min-width: 0; }
+    .stat-val strong { color: var(--text); font-weight: 600; }
 
     .hero-cta {
       display: flex; gap: 16px; flex-wrap: wrap;
@@ -274,24 +274,6 @@
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
     .fade-in.visible { opacity: 1; transform: none; }
-
-    /* ─── Counter row ─── */
-    .counter-row {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 1px; background: var(--border);
-      border: 1px solid var(--border); margin-bottom: 80px;
-    }
-    .counter-cell {
-      background: var(--bg); padding: 36px 28px; text-align: center;
-    }
-    .counter-val {
-      font-size: 52px; font-weight: 800; color: var(--accent);
-      line-height: 1; margin-bottom: 10px;
-    }
-    .counter-desc {
-      font-family: 'JetBrains Mono', monospace; font-size: 10px;
-      color: var(--text-3); letter-spacing: 0.12em; text-transform: uppercase;
-    }
 
     /* ─── Timeline ─── */
     .timeline { position: relative; }
@@ -387,6 +369,25 @@
     .proj-card:hover .tech-chip {
       background: var(--accent-dim); color: var(--accent);
       border-color: rgba(249,115,22,0.28);
+    }
+
+    /* ─── Open source ─── */
+    .oss-links { gap: 20px; flex-wrap: wrap; }
+    .oss-more { margin-top: 40px; }
+    .oss-more-label {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      color: var(--text-4); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 16px;
+    }
+    .oss-more ul { list-style: none; border-top: 1px solid var(--border); }
+    .oss-more li { border-bottom: 1px solid var(--border); }
+    .oss-more a {
+      display: flex; align-items: baseline; gap: 16px; padding: 14px 0;
+      color: var(--text-2); font-size: 14px; text-decoration: none; transition: color 0.2s;
+    }
+    .oss-more a:hover { color: var(--accent); }
+    .oss-repo {
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+      color: var(--accent); min-width: 96px; flex-shrink: 0;
     }
 
     /* ─── Skills ─── */
@@ -487,32 +488,25 @@
     }
 
     /* ─── Responsive ─── */
-    @media (max-width: 900px) {
-      .counter-row { grid-template-columns: repeat(2, 1fr); }
-    }
     @media (max-width: 640px) {
       nav { padding: 0 24px; }
       .nav-links { display: none; }
       .nav-toggle { display: flex; }
       .hero { padding: 110px 24px 70px; }
-      .hero-stats { gap: 28px; }
+      .hero-stats { font-size: 12px; }
+      .stat-row { gap: 10px; }
+      .stat-key { min-width: 11ch; }
       .section-wrap { padding: 80px 24px; }
       .scroll-hint { display: none; }
       .timeline::before { display: none; }
       .tl-item { padding-left: 0; }
       .tl-item::before { display: none; }
       .projects-grid { grid-template-columns: 1fr; }
-      .counter-row { grid-template-columns: 1fr; }
-      .counter-val { font-size: 40px; }
-      .counter-cell { padding: 24px 28px; }
       .contact-wrap { padding: 80px 24px; }
       footer { padding: 24px; flex-direction: column; gap: 10px; text-align: center; }
       .cursor, .cursor-ring { display: none; }
       body { cursor: auto; }
       a, button { cursor: pointer; }
-    }
-    @media (max-width: 380px) {
-      .counter-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -527,6 +521,7 @@
     <div class="nav-logo">asp.dev</div>
     <ul class="nav-links">
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#open-source">Open Source</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#education">Education</a></li>
@@ -539,6 +534,7 @@
 
   <div class="mobile-nav" id="mnav">
     <a href="#experience" onclick="closeMNav()">Experience</a>
+    <a href="#open-source" onclick="closeMNav()">Open Source</a>
     <a href="#projects"   onclick="closeMNav()">Projects</a>
     <a href="#skills"     onclick="closeMNav()">Skills</a>
     <a href="#education"  onclick="closeMNav()">Education</a>
@@ -550,7 +546,7 @@
     <div class="hero-glow"></div>
     <div class="hero-glow-2"></div>
     <div class="hero-content">
-      <div class="hero-eyebrow">Full Stack AI &amp; Backend Developer</div>
+      <div class="hero-eyebrow">Full Stack Engineer · AI &amp; Backend</div>
       <h1 class="hero-name">
         <span>Aditya</span>
         <span>Swarup</span>
@@ -561,27 +557,14 @@
         <span id="tw"></span>
         <span class="t-cursor"></span>
       </div>
-      <div class="hero-stats">
-        <div class="stat-item">
-          <div class="stat-number">3+</div>
-          <div class="stat-label">Years Full Stack</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">25%</div>
-          <div class="stat-label">Revenue Driven</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">99.9%</div>
-          <div class="stat-label">Uptime Maintained</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">5+</div>
-          <div class="stat-label">Projects Shipped</div>
-        </div>
-      </div>
+      <dl class="hero-stats">
+        <div class="stat-row"><dt class="stat-key">now</dt><dd class="stat-val">building <strong>agentic AI systems</strong> @&nbsp;Heart</dd></div>
+        <div class="stat-row"><dt class="stat-key">previously</dt><dd class="stat-val"><strong>3.5 yrs @ PwC</strong> · revenue systems for an <strong>S&amp;P 500</strong> client</dd></div>
+        <div class="stat-row"><dt class="stat-key">open_source</dt><dd class="stat-val"><strong>shipping upstream</strong> on nights &amp; weekends</dd></div>
+      </dl>
       <div class="hero-cta">
         <a href="#contact"  class="btn-primary">Get in touch</a>
-        <a href="#projects" class="btn-outline">View work</a>
+        <a href="#experience" class="btn-outline">View work</a>
       </div>
     </div>
     <div class="scroll-hint">
@@ -633,59 +616,43 @@
         <h2 class="section-title">Where I've<br/>shipped impact.</h2>
       </div>
 
-      <!-- Counter stats -->
-      <div class="counter-row fade-in" id="counters">
-        <div class="counter-cell">
-          <div class="counter-val" data-target="25" data-suffix="%">0%</div>
-          <div class="counter-desc">Revenue Increase</div>
-        </div>
-        <div class="counter-cell">
-          <div class="counter-val" data-target="3" data-suffix="×">0×</div>
-          <div class="counter-desc">System Throughput</div>
-        </div>
-        <div class="counter-cell">
-          <div class="counter-val" data-target="99.9" data-suffix="%" data-dec="1">0%</div>
-          <div class="counter-desc">Uptime Maintained</div>
-        </div>
-        <div class="counter-cell">
-          <div class="counter-val" data-target="95" data-suffix="%">0%</div>
-          <div class="counter-desc">Revenue Outstanding Cut</div>
-        </div>
-      </div>
-
       <div class="timeline">
         <div class="tl-item fade-in">
-          <div class="tl-company">Lensmagic AI</div>
+          <div class="tl-company">Heart</div>
           <div class="tl-role">Software Engineer</div>
           <div class="tl-meta">
             <span>May 2026 - Present</span>
             <span>Remote</span>
           </div>
           <ul class="tl-list">
-            <li>Designed and built the <strong>outreach distribution engine</strong> — an <strong>agentic workflow</strong> for researching, personalizing, and sending cold outreach campaigns to commercial photographers.</li>
+            <li>Designed and built the <strong>outreach distribution engine</strong> — an <strong>agentic workflow</strong> in TypeScript for researching, personalizing, and sending cold outreach campaigns to <strong>10K+ commercial photographers</strong>.</li>
+            <li>Engineered an <strong>automated lead-discovery pipeline</strong> in TypeScript (Bun, Postgres) that crawls, scrapes, and enriches web data end-to-end, with an <strong>LLM-based entity-resolution stage</strong> that resolves owners and stages deduplicated leads.</li>
+            <li>Designed and built the <strong>billing &amp; settings experience</strong> for our AI creative platform (Next.js, TypeScript, Stripe, Supabase): billing tabs, invoices, usage charts, credit ledger and session security.</li>
+            <li>Built the <strong>marketing site and paid-ad landing page</strong> featuring <strong>70+ AI images &amp; videos</strong>, and made it fast with no visible loss in quality: media a screen hides is never downloaded, and videos load only as they scroll into view, cutting mobile image data by up to <strong>92% (4.6MB → 0.35MB)</strong> and the brand font by <strong>60%</strong> with WOFF2.</li>
           </ul>
         </div>
 
         <div class="tl-item fade-in">
-          <div class="tl-company">PwC</div>
+          <div class="tl-company">PricewaterhouseCoopers (PwC)</div>
           <div class="tl-role">Senior Associate</div>
           <div class="tl-meta">
             <span>Aug 2022 - Oct 2025</span>
-            <span>Bangalore, India</span>
+            <span>Remote</span>
           </div>
           <ul class="tl-list">
-            <li>Managed <strong>production backend systems</strong> for an <strong>S&amp;P 500</strong> listed company's billing &amp; revenue platform, owning full-stack delivery across backend services and frontend UI.</li>
-            <li>Led the revamp of the ramped billing engine using Apex, driving <strong>25% increase in revenue</strong>, achieving <strong>95% reduction</strong> in manual touchpoints, improving billing accuracy, and maintaining <strong>99.9% uptime</strong>.</li>
-            <li>Rebuilt the product listing and cart UI using JavaScript, cutting page load time by <strong>90% (15s → 1–2s)</strong> — sole frontend engineer on the feature.</li>
-            <li>Profiled and overhauled a heavily customized invoicing service — centralizing core logic, removing redundant triggers, and batching DB operations — increasing invoice capacity <strong>3× (300 → 900+ line items)</strong>, cutting posting time from <strong>5–6 min to near-instant</strong>, and reducing processing time by <strong>&gt;80%</strong> with memory to <strong>&lt;10%</strong>.</li>
+            <li>Managed <strong>production backend systems</strong> for an <strong>S&amp;P 500</strong> company's <strong>billing and revenue</strong> platform.</li>
+            <li>Revamped the custom <strong>ramp billing engine</strong>, driving a <strong>25% increase in revenue</strong> and a <strong>95% reduction</strong> in manual touchpoints while sustaining <strong>99.9% uptime</strong>.</li>
+            <li>Re-architected the recurring-billing batch into a <strong>configuration-driven orchestrator</strong> of modular services, replacing per-record queries and writes with <strong>bulk operations</strong> to cut processing time by <strong>80%</strong> and peak memory by <strong>90%</strong>.</li>
+            <li>Rebuilt the product listing and cart UI using JavaScript, reducing page load time by <strong>90% (15s → 1–2s)</strong>.</li>
+            <li>Profiled and overhauled a heavily customized invoicing service, increasing invoice capacity <strong>3× (300 → 900+ line items)</strong> and cutting posting time from <strong>5–6 min to near-instant</strong>.</li>
             <li>Successfully resolved over <strong>70% of user-reported bugs</strong> within a year, enhancing user satisfaction &amp; operational efficiency.</li>
-            <li>Owned end-to-end coordination with revenue and finance stakeholders for <strong>quarter-end and annual closures</strong>, driving revenue outstanding down by <strong>95% on average</strong> — on time, every cycle.</li>
+            <li>Owned end-to-end coordination with revenue and finance stakeholders for <strong>quarter-end and annual closures</strong> over <strong>2 years</strong>, driving revenue outstanding down by <strong>95% on average</strong> — delivered on time, every cycle.</li>
           </ul>
           <div class="award-pill">★&nbsp; Rockstar Developer of the Month — Jan '25</div>
         </div>
 
         <div class="tl-item fade-in">
-          <div class="tl-company">PwC</div>
+          <div class="tl-company">PricewaterhouseCoopers (PwC)</div>
           <div class="tl-role">Intern</div>
           <div class="tl-meta">
             <span>Mar 2022 - Aug 2022</span>
@@ -696,6 +663,77 @@
             <li>Improved validation layers, reducing downstream synchronization failures by <strong>30%</strong>.</li>
           </ul>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══ OPEN SOURCE ═══ -->
+  <section id="open-source">
+    <div class="section-wrap">
+      <div class="section-head fade-in">
+        <div class="section-label">Open Source</div>
+        <h2 class="section-title">Merged<br/>upstream.</h2>
+      </div>
+
+      <div class="projects-grid">
+        <div class="proj-card fade-in">
+          <div class="proj-num">GITLAB / CLI</div>
+          <div class="proj-name">glab — GitLab CLI</div>
+          <div class="proj-desc">Introduced a working <strong>5-minute OAuth token grace period</strong> in the Go oauth2 token source, so long Git operations stop failing on near-expired credentials.</div>
+          <ul class="proj-bullets">
+            <li><b>→</b><span>Tokens refresh <strong>before</strong> expiry instead of mid-operation</span></li>
+            <li><b>→</b><span>Safe fallback for <strong>read-only configs</strong> that can't persist refreshed tokens</span></li>
+          </ul>
+          <div class="tech-row">
+            <span class="tech-chip">Go</span>
+            <span class="tech-chip">OAuth 2.0</span>
+            <span class="tech-chip">CLI</span>
+          </div>
+          <div class="proj-footer">
+            <a href="https://gitlab.com/gitlab-org/cli/-/merge_requests/3908" target="_blank" rel="noopener" class="proj-gh">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="m23.6 9.593-.034-.086L20.3.98a.851.851 0 0 0-.336-.405.875.875 0 0 0-1 .054.875.875 0 0 0-.29.44l-2.205 6.748H7.538L5.332 1.07a.857.857 0 0 0-.29-.441.875.875 0 0 0-1-.054.859.859 0 0 0-.336.405L.433 9.502l-.032.086a6.066 6.066 0 0 0 2.012 7.01l.011.009.03.021 4.976 3.727 2.462 1.863 1.5 1.132a1.008 1.008 0 0 0 1.22 0l1.499-1.132 2.462-1.863 5.006-3.749.012-.01a6.068 6.068 0 0 0 2.01-7.003z"/></svg>
+              View MR !3908
+            </a>
+          </div>
+        </div>
+
+        <div class="proj-card fade-in">
+          <div class="proj-num">GITLAB / SIPHON</div>
+          <div class="proj-name">Siphon — Data Replication</div>
+          <div class="proj-desc">Replaced a CSV-based parser with an <strong>array-literal scanner</strong> to stop NULL array elements from stalling <strong>PostgreSQL → ClickHouse</strong> replication.</div>
+          <ul class="proj-bullets">
+            <li><b>→</b><span>Correctly parses <strong>NULL and nested elements</strong> in Postgres array literals</span></li>
+            <li><b>→</b><span>Added <strong>Prometheus counters</strong> for array elements degraded during parsing</span></li>
+          </ul>
+          <div class="tech-row">
+            <span class="tech-chip">Go</span>
+            <span class="tech-chip">PostgreSQL</span>
+            <span class="tech-chip">ClickHouse</span>
+            <span class="tech-chip">Prometheus</span>
+          </div>
+          <div class="proj-footer oss-links">
+            <a href="https://gitlab.com/gitlab-org/analytics-section/siphon/-/merge_requests/597" target="_blank" rel="noopener" class="proj-gh">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="m23.6 9.593-.034-.086L20.3.98a.851.851 0 0 0-.336-.405.875.875 0 0 0-1 .054.875.875 0 0 0-.29.44l-2.205 6.748H7.538L5.332 1.07a.857.857 0 0 0-.29-.441.875.875 0 0 0-1-.054.859.859 0 0 0-.336.405L.433 9.502l-.032.086a6.066 6.066 0 0 0 2.012 7.01l.011.009.03.021 4.976 3.727 2.462 1.863 1.5 1.132a1.008 1.008 0 0 0 1.22 0l1.499-1.132 2.462-1.863 5.006-3.749.012-.01a6.068 6.068 0 0 0 2.01-7.003z"/></svg>
+              View MR !597
+            </a>
+            <a href="https://gitlab.com/gitlab-org/analytics-section/siphon/-/merge_requests/606" target="_blank" rel="noopener" class="proj-gh">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="m23.6 9.593-.034-.086L20.3.98a.851.851 0 0 0-.336-.405.875.875 0 0 0-1 .054.875.875 0 0 0-.29.44l-2.205 6.748H7.538L5.332 1.07a.857.857 0 0 0-.29-.441.875.875 0 0 0-1-.054.859.859 0 0 0-.336.405L.433 9.502l-.032.086a6.066 6.066 0 0 0 2.012 7.01l.011.009.03.021 4.976 3.727 2.462 1.863 1.5 1.132a1.008 1.008 0 0 0 1.22 0l1.499-1.132 2.462-1.863 5.006-3.749.012-.01a6.068 6.068 0 0 0 2.01-7.003z"/></svg>
+              View MR !606
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="oss-more fade-in">
+        <div class="oss-more-label">Also merged at GitLab</div>
+        <ul>
+          <li><a href="https://gitlab.com/gitlab-org/glql/-/merge_requests/517" target="_blank" rel="noopener"><span class="oss-repo">glql</span>Return an error for numeric literals above i64::MAX</a></li>
+          <li><a href="https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253309" target="_blank" rel="noopener"><span class="oss-repo">gitlab</span>Locale-aware string comparison in the GLQL sorter</a></li>
+          <li><a href="https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/merge_requests/4044" target="_blank" rel="noopener"><span class="oss-repo">gitlab-lsp</span>Omit missing x-gitlab-client headers in HTTP client</a></li>
+          <li><a href="https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/6989" target="_blank" rel="noopener"><span class="oss-repo">ai-assist</span>Share default_features_dir across feature discovery</a></li>
+        </ul>
       </div>
     </div>
   </section>
@@ -1054,11 +1092,10 @@
 
     /* ── Typewriter ── */
     const phrases = [
-      'full_stack_developer()',
-      'backend_engineer()',
+      'full_stack_engineer()',
       'ai_engineer()',
-      'systems_builder()',
-      'performance_optimizer()',
+      'backend_engineer()',
+      'lifelong_learner()',
     ];
     let pi = 0, ci = 0, del = false;
     const tw = document.getElementById('tw');
@@ -1101,30 +1138,6 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
 
-    /* ── Counter animation ── */
-    function runCounter(el) {
-      if (el.dataset.done) return;
-      el.dataset.done = '1';
-      const target = parseFloat(el.dataset.target);
-      const suffix = el.dataset.suffix || '';
-      const dec    = parseInt(el.dataset.dec || '0');
-      const dur    = 1400;
-      const t0     = Date.now();
-      (function tick() {
-        const p = Math.min((Date.now() - t0) / dur, 1);
-        const e = 1 - Math.pow(1 - p, 3);          // ease-out cubic
-        el.textContent = (target * e).toFixed(dec) + suffix;
-        if (p < 1) requestAnimationFrame(tick);
-      })();
-    }
-
-    const cio = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting)
-          e.target.querySelectorAll('[data-target]').forEach(runCounter);
-      });
-    }, { threshold: 0.3 });
-    document.querySelectorAll('.counter-row').forEach(el => cio.observe(el));
   </script>
 
 </body>
