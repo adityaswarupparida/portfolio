@@ -885,20 +885,21 @@
 
 
         <div class="proj-card fade-in">
-          <div class="proj-num">05 / HUBSPOT DATA EXPLORER</div>
-          <div class="proj-name">HubSpot Data Explorer</div>
-          <div class="proj-desc">A <strong>no-code CRM explorer tool</strong> to browse and query HubSpot data without writing queries, with a full OAuth flow and responsive dashboard.</div>
+          <div class="proj-num">05 / HUBSPOT DATA VIEWER</div>
+          <div class="proj-name">HubSpot Data Viewer</div>
+          <div class="proj-desc">A <strong>no-code query builder</strong> for HubSpot CRM: pick any object, choose fields, stack filters and run the query without writing API calls.</div>
           <ul class="proj-bullets">
-            <li><b>→</b><span>HubSpot integration via <strong>OAuth 2.0</strong> for secure, scoped data access</span></li>
-            <li><b>→</b><span>Node.js + Express backend fetches &amp; aggregates across <strong>HubSpot REST APIs</strong></span></li>
-            <li><b>→</b><span>Responsive Next.js frontend for <strong>filtering, querying and visualizing</strong> CRM data</span></li>
+            <li><b>→</b><span>Works across <strong>CRM objects</strong> (contacts, deals, tickets, invoices…) by discovering schemas and properties live</span></li>
+            <li><b>→</b><span>Filters compile into <strong>HubSpot Search API</strong> queries; paged results in a <strong>TanStack table</strong> linking back to each record</span></li>
+            <li><b>→</b><span><strong>OAuth 2.0</strong> with tokens cached in <strong>Redis</strong> and auto-refreshed on expiry</span></li>
           </ul>
           <div class="tech-row">
             <span class="tech-chip">TypeScript</span>
-            <span class="tech-chip">Node.js</span>
-            <span class="tech-chip">Express.js</span>
-            <span class="tech-chip">NextJS</span>
-            <span class="tech-chip">REST APIs</span>
+            <span class="tech-chip">Next.js</span>
+            <span class="tech-chip">Express</span>
+            <span class="tech-chip">Bun</span>
+            <span class="tech-chip">PostgreSQL</span>
+            <span class="tech-chip">Redis</span>
             <span class="tech-chip">OAuth 2.0</span>
           </div>
           <div class="proj-footer">
