@@ -217,6 +217,10 @@
       transform: translateY(-3px);
       box-shadow: 0 10px 36px rgba(249,115,22,0.45);
     }
+    /* Hero actions written as shell commands */
+    .btn-primary.btn-cmd, .btn-outline.btn-cmd { text-transform: none; letter-spacing: 0.01em; font-size: 13px; font-weight: 700; }
+    .btn-primary .cmd-sigil { opacity: 0.55; }
+    .btn-outline .cmd-sigil { color: var(--accent); }
     .btn-outline {
       padding: 14px 32px; background: transparent; color: var(--text-2);
       font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500;
@@ -498,6 +502,7 @@
     .clink-mail:hover, .clink-mail:focus-visible { color: var(--accent); }
     .clink-gh:hover, .clink-gh:focus-visible { color: var(--text); }
     .clink-li:hover, .clink-li:focus-visible { color: #3b8fe0; }
+    .clink-cv:hover, .clink-cv:focus-visible { color: var(--accent); }
     .clink::after {
       content: attr(data-label); position: absolute; top: calc(100% + 8px); left: 50%;
       transform: translateX(-50%); white-space: nowrap;
@@ -610,8 +615,8 @@
         <div class="stat-row"><dt class="stat-key">open_source</dt><dd class="stat-val"><strong>shipping upstream</strong> on nights &amp; weekends</dd></div>
       </dl>
       <div class="hero-cta">
-        <a href="#contact"  class="btn-primary">Get in touch</a>
-        <a href="#experience" class="btn-outline">View work</a>
+        <a href="#contact" class="btn-primary btn-cmd"><span class="cmd-sigil">$</span> ./contact</a>
+        <a href="https://drive.google.com/file/d/1xM8C68cFH7o6norQjkUOHiE12d9HDf7P/view?usp=sharing" class="btn-outline btn-cmd" target="_blank" rel="noopener"><span class="cmd-sigil">$</span> cat resume.pdf</a>
       </div>
     </div>
     <div class="scroll-hint">
@@ -1083,6 +1088,11 @@
           <a href="https://linkedin.com/in/aditya-swarup-parida-30" class="clink clink-li" data-label="LinkedIn" aria-label="LinkedIn" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a href="https://drive.google.com/file/d/1xM8C68cFH7o6norQjkUOHiE12d9HDf7P/view?usp=sharing" class="clink clink-cv" data-label="Résumé" aria-label="Résumé (PDF)" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h8M8 9h2"/>
             </svg>
           </a>
         </div>
